@@ -32,11 +32,24 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="<?=base_url("member/proses")?>" method="post">
+				<form class="login100-form validate-form" action="<?=base_url("member/")?>" method="post">
 					<span class="login100-form-title p-b-48">
 						<!-- <i class="zmdi zmdi-font"></i> -->
 						<img src="<?=base_url('asset/member/img/dougle.png')?>" alt="" class="logo" style="width: 200px;">
 					</span>
+
+					<?php  
+						if (isset($notifikasi) && $notifikasi == 0) {
+					?>
+						<div class="alert alert-danger">
+							<p>
+								<strong>Gagal !</strong> Login... <br>
+								Username / Password anda tidak sesuai
+							</p>
+						</div>
+					<?php
+						}
+					?>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
 						<input class="input100" type="text" name="email">
