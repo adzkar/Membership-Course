@@ -34,13 +34,18 @@
 			border-radius: 10px;
 			margin-bottom: 10px;
 		}
+		@media(min-width: 800px) {
+			div.wrap-login100 {
+				width: 40%;
+			}
+		}
 	</style>
 </head>
 <body>
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="wrap-login100" style="width: 40%">
+			<div class="wrap-login100">
 
 				<form class="login100-form validate-form" action="<?=base_url("member/signup/proses")?>" method="post">
 					<span class="login100-form-title p-b-26">
