@@ -38,7 +38,17 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form" action="<?=base_url('admin/proses')?>" method="post">
+				<?php  
+					if (isset($notifikasi) && $notifikasi == 1) {
+				?>
+					<div class="alert alert-danger">
+					  <strong>Gagal Login !</strong> Username atau Password yang anda masukkan salah
+					</div>
+				<?php
+					}
+				?>
+
+				<form class="login100-form validate-form" action="<?=base_url('admin')?>" method="post">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
 						<input class="input100" type="text" name="username" placeholder="Enter username">

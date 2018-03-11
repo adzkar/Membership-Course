@@ -24,29 +24,28 @@
 			if ($this->session->userdata('status_masuk') == 'ya') {
 				redirect('admin/dashboard');
 			} else {
-				$this->load->view('admin/login');
-			}
-		}
-
-		public function proses() {
-			$input = $this->input->post();
-			if (isset($input['tombol'])) {
-				$data_cek = array(
-						'username' => $input['username'],
-						'password' => md5($input['pass'])
-					);
-				$cek = $this->Login_model->cek($data_cek,$this->tabel);
-				if ($cek->num_rows() > 0) {
-					$buat_sesi = array(
+				$notifikasi = NULL;
+				$login_view = NULL;
+				$input = $this->input->post();
+				if (isset($input['tombol'])) {
+					$data_cek = array(
+							'username' => $input['username'],
+							'password' => md5($input['pass'])
+						);
+					$cek = $this->Login_model->cek($data_cek,$this->tabel);
+					if ($cek->num_rows() == 1) {
+						$buat_sesi = array(
 									'status_masuk' => 'ya', 
 								);
-					$this->session->set_userdata($buat_sesi);
-					redirect('admin/dashboard');
-				} else {
-					redirect('admin');
+						$this->session->set_userdata($buat_sesi);
+						redirect('admin/dashboard');
+					} else {
+						$notifikasi = 1;
+					}
+					$login_view = array(
+									'notifikasi' => $notifikasi);
 				}
-			} else {
-				redirect('admin');
+				$this->load->view('admin/login', $login_view);
 			}
 		}
 	
