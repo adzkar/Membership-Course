@@ -24,6 +24,13 @@
 			}
 		}
 
+		public function cek_uang($uang) {
+			$error = 0;
+			if (!is_numeric($uang) || strlen($uang) != 12 || strlen($uang) != 13) {
+				return 1;
+			}
+		}
+
 	}
 
 

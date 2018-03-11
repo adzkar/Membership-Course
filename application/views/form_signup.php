@@ -76,11 +76,11 @@
 						}
 					?>
 					<?php  
-						if (isset($email)) {
+						if (isset($error)) {
 					?>
 						<div class="alert alert-danger">
 							<p>
-								<strong><?=$email?> !</strong>
+								<strong><?=$error?></strong>
 							</p>
 						</div>
 					<?php
@@ -88,12 +88,12 @@
 					?>
 					<div class="wrap-input100 validate-input" data-validate = "Enter nama">
 						<input class="input100" type="text" name="nama" required="">
-						<span class="focus-input100" data-placeholder="Nama"></span> 
+						<span class="focus-input100" data-placeholder="Nama *"></span> 
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
 						<input class="input100" type="text" name="email" required="">
-						<span class="focus-input100" data-placeholder="Email"></span> 
+						<span class="focus-input100" data-placeholder="Email *"></span> 
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -101,21 +101,23 @@
 							<i class="zmdi zmdi-eye"></i>
 						</span>
 						<input class="input100" type="password" name="password" required>
-						<span class="focus-input100" data-placeholder="Password"></span>
+						<span class="focus-input100" data-placeholder="Password *"></span>
 					</div>
 
 					<div class="wrap-input100">
 						<input class="input100" type="text" name="line">
-						<span class="focus-input100" data-placeholder="ID Line"></span> 
+						<span class="focus-input100" data-placeholder="ID Line **"></span> 
 					</div>
 
 					<div class="wrap-input100">
 						<input class="input100" type="text" name="nohp">
-						<span class="focus-input100" data-placeholder="No. HP / WA"></span> 
+						<span class="focus-input100" data-placeholder="No. HP / WA **"></span> 
 					</div>
 
 					<p class="kotak">
 						N.B : <br>
+						~ *  ( Wajib ) <br>
+						~ ** ( Pilih Salah Satu ) <br>
 						Untuk ID Line / WA digunakan agar kami dapat menghubungi peserta didik, sehingga pembelajaran menjadi lebih interaktif.  &nbsp &nbsp :)
 					</p>
 

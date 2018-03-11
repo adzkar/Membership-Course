@@ -49,7 +49,7 @@
 		public function signup() {
 			$notifikasi = null;
 			$data_signup  = NULL;
-			$email = NULL;
+			$error = NULL;
 			$page = $this->uri->segment(3);
 			if ($page == 'proses') {
 				$input = $this->input->post();
@@ -58,8 +58,13 @@
 					// cek apakah email sudah dipakai atau belum
 					$where = array('email' => $input['email']);
 					$cek_data = $this->Member_model->view_id($where, $this->tabel_member);
-					if (count($cek_data)-1 > 0) {
-						$email = "Email anda sudah terdaftar";
+					if (count($cek_data)-1 > 0 || $this->cek_login->cek_uang($input['nohp']) == 1) {
+						if (count($cek_data)-1 > 0) {
+							$error .= "Email anda sudah terdaftar <br>";
+						}
+						if ($this->cek_login->cek_uang($input['nohp']) == 1) {
+							$error .= "No. Telp / WA tidak valid <br> ";
+						}
 					} else {
 						if (!isset($input['line']) && !isset($input['nohp'])) {
 							$data_input = array(
@@ -105,7 +110,7 @@
 				}
 				$data_signup = array(
 								'status' => $notifikasi,
-								'email' => $email
+								'error' => $error
 							);
 			}
 			$this->load->view('form_signup', $data_signup);	
