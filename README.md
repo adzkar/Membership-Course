@@ -1,1 +1,1 @@
-# josmember
+# MemberShip Course
