@@ -48,57 +48,67 @@
 
 		public function signup() {
 			$notifikasi = null;
+			$data_signup  = NULL;
+			$email = NULL;
 			$page = $this->uri->segment(3);
 			if ($page == 'proses') {
 				$input = $this->input->post();
-				// var_dump($input);
 				if (isset($input['tombol'])) {
-					// echo "Tombol Sudah diset";
 					$data_input = null;
-					if (!isset($input['line']) && !isset($input['nohp'])) {
-						$data_input = array(
-								'nama' => $input['nama'], 
-								'email' => $input['email'],
-								'password' => md5($input['password']),
-								'status' => 'free'
-							);
-					} else if (!isset($input['line']) && isset($input['nohp'])) {
-						$data_input = array(
-								'nama' => $input['nama'], 
-								'email' => $input['email'],
-								'password' => md5($input['password']),
-								'status' => 'free',
-								'line' => $input['nohp']
-							);
-					} else if (!isset($input['nohp']) && isset($input['line'])) {
-						$data_input = array(
-								'nama' => $input['nama'], 
-								'email' => $input['email'],
-								'password' => md5($input['password']),
-								'status' => 'free',
-								'line' => $input['line']
-							);
+					// cek apakah email sudah dipakai atau belum
+					$where = array('email' => $input['email']);
+					$cek_data = $this->Member_model->view_id($where, $this->tabel_member);
+					if (count($cek_data)-1 > 0) {
+						$email = "Email anda sudah terdaftar";
 					} else {
-						$data_input = array(
-								'nama' => $input['nama'], 
-								'email' => $input['email'],
-								'password' => md5($input['password']),
-								'status' => 'free',
-								'line' => $input['line'],
-								'wa' => $input['nohp']
-							);
+						if (!isset($input['line']) && !isset($input['nohp'])) {
+							$data_input = array(
+									'nama' => $input['nama'], 
+									'email' => $input['email'],
+									'password' => md5($input['password']),
+									'status' => 'free'
+								);
+						} else if (!isset($input['line']) && isset($input['nohp'])) {
+							$data_input = array(
+									'nama' => $input['nama'], 
+									'email' => $input['email'],
+									'password' => md5($input['password']),
+									'status' => 'free',
+									'line' => $input['nohp']
+								);
+						} else if (!isset($input['nohp']) && isset($input['line'])) {
+							$data_input = array(
+									'nama' => $input['nama'], 
+									'email' => $input['email'],
+									'password' => md5($input['password']),
+									'status' => 'free',
+									'line' => $input['line']
+								);
+						} else {
+							$data_input = array(
+									'nama' => $input['nama'], 
+									'email' => $input['email'],
+									'password' => md5($input['password']),
+									'status' => 'free',
+									'line' => $input['line'],
+									'wa' => $input['nohp']
+								);
+						}
+						$signup = $this->Login_model->create($this->tabel_member, $data_input);
+						if ($signup) {
+							$notifikasi = 'sukses';
+						} else {
+							$notifikasi = 'gagal';
+						}
 					}
-					// var_dump($input);
-					// var_dump($data_input);
-					$signup = $this->Login_model->create($this->tabel_member, $data_input);
-					if ($signup) {
-						$notifikasi = array('status' => 'sukses');
-					} else {
-						$notifikasi = array('status' => 'gagal');
-					}
+
 				}
+				$data_signup = array(
+								'status' => $notifikasi,
+								'email' => $email
+							);
 			}
-			$this->load->view('form_signup', $notifikasi);	
+			$this->load->view('form_signup', $data_signup);	
 		}
 
 
@@ -202,11 +212,6 @@
             } else {
             	echo "Gagal";
             }
-		}
-
-		public function testing() {
-			$data = $this->Member_model->lihat_konten('perfect-past-tense');
-			print_r($data);
 		}
 
 

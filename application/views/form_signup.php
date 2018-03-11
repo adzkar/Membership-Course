@@ -74,7 +74,17 @@
 						</div>
 					<?php
 						}
-
+					?>
+					<?php  
+						if (isset($email)) {
+					?>
+						<div class="alert alert-danger">
+							<p>
+								<strong><?=$email?> !</strong>
+							</p>
+						</div>
+					<?php
+						}
 					?>
 					<div class="wrap-input100 validate-input" data-validate = "Enter nama">
 						<input class="input100" type="text" name="nama" required="">
