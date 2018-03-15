@@ -48,11 +48,9 @@
 			<div class="wrap-login100">
 
 				<form class="login100-form validate-form" action="<?=base_url("member/signup/proses")?>" method="post">
-					<span class="login100-form-title p-b-26">
-						Welcome
-					</span>
 					<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
+						<!-- <i class="zmdi zmdi-font"></i> -->
+						<img src="<?=base_url('asset/member/img/dougle.png')?>" alt="" class="logo" style="width: 200px;">
 					</span>
 					<?php  
 						if (isset($status) && $status == 'sukses') {

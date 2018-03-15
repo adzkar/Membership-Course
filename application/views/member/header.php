@@ -3,12 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>English Course</title>
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/font-awesome.css">
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/bootstrap.css">
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/css.css">
+	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/tambah.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 	
 
@@ -30,7 +32,32 @@
 							<img src="<?=base_url('asset/member/')?>img/dougle_white.png" alt=" logo">
 						</a>
 					</li>
-					<!-- <div class="akun"> -->
+					<!-- responsive navbar menjadi sidebar di kanan -->
+					<li class="button"><div class="responsive_menu">
+						<i class="fa fa-bars"></i>
+						<div class="sidebar_menu">
+							<div class="icon">
+								<div class="fa fa-user"></div>
+								<div class="nama">
+									<?=ucfirst($nama)?>
+								</div>
+								<div class="space_button">
+									<div class="button_in_drop">
+										<a href="#">Edit Profil</a>
+									</div>
+									<div class="logout button_in_drop">
+										<a href="<?=base_url('member/dashboard/logout')?>">Logout</a>
+									</div>
+								</div>
+
+							</div>
+							<div class="box_kelas">
+								<a href="<?=base_url('member/dashboard/basic')?>" title="" class="kelas">Basic</a>
+								<a href="<?=base_url('member/dashboard/advance')?>" title="" class="kelas">Advance</a>
+							</div>
+						</div></div>
+					</li>
+					<!-- akhir responsive navbar -->
 						<li class="akun"><?=strtoupper($nama)?>
 							<div style="float: right" class="akun_drop">
 								<div class="icon">
@@ -40,7 +67,7 @@
 									</div>
 									<div class="space_button">
 										<div class="button_in_drop">
-											<a href="">Edit Profil</a>
+											<a href="#">Edit Profil</a>
 										</div>
 										<div >
 											<a class="logout button_in_drop" href="<?=base_url('member/dashboard/logout')?>">Logout</a>
@@ -61,6 +88,15 @@
 								?>
 									</div>
 								</div>
+								<?php  
+									if ($status == 'free') {
+								?>
+								<a type="" class="responsive_upgrade">
+									UPGRADE
+								</a>
+								<?php  
+									}
+								?>
 								</center>
 							</ul>
 						</div>
