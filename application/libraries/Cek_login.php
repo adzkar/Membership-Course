@@ -1,9 +1,9 @@
-<?php  
+<?php
 
 
 	class Cek_login
 	{
-	
+
 		protected $ci;
 
 		public function __construct()
@@ -24,11 +24,24 @@
 			}
 		}
 
-		public function cek_uang($uang) {
+		public function cek_hp($angka) {
 			$error = 0;
-			if (!is_numeric($uang) || strlen($uang) != 12 || strlen($uang) != 13) {
-				return 1;
+			if (is_numeric($angka) == false) {
+				$error = 1;
+			} else if (strlen($angka) < 11 && strlen($angka) > 13) {
+				$error = 1;
 			}
+			return $error;
+		}
+
+		public function cek_lagi($angka) {
+			$error = 0;
+			if (is_numeric($angka) == false) {
+				$error = 1;
+			} else if (strlen($angka) < 11 && strlen($angka) > 13) {
+				$error = 1;
+			}
+			return $error;
 		}
 
 	}

@@ -1,12 +1,12 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
-	
+
 	class Member extends CI_Controller {
-			
+
 		private $tabel_member = "member";
 		private $tabel_upgrade = "upgrade";
 		private $tabel_content = "content";
-	
+
 		public function __construct()
 		{
 			parent::__construct();
@@ -25,7 +25,7 @@
 				$input = $this->input->post();
 				if (isset($input['tombol'])) {
 					$data_login = array(
-								'email' => $input['email'], 
+								'email' => $input['email'],
 								'password' => md5($input['password'])
 							);
 					$cek = $this->Login_model->cek($data_login, $this->tabel_member);
@@ -58,46 +58,51 @@
 					// cek apakah email sudah dipakai atau belum
 					$where = array('email' => $input['email']);
 					$cek_data = $this->Member_model->view_id($where, $this->tabel_member);
-					if (count($cek_data)-1 > 0 || $this->cek_login->cek_uang($input['nohp']) == 1) {
+					if (count($cek_data)-1 > 0) {
 						if (count($cek_data)-1 > 0) {
 							$error .= "Email anda sudah terdaftar <br>";
-						}
-						if ($this->cek_login->cek_uang($input['nohp']) == 1) {
-							$error .= "No. Telp / WA tidak valid <br> ";
 						}
 					} else {
 						if (!isset($input['line']) && !isset($input['nohp'])) {
 							$data_input = array(
-									'nama' => $input['nama'], 
+									'nama' => $input['nama'],
 									'email' => $input['email'],
 									'password' => md5($input['password']),
 									'status' => 'free'
 								);
 						} else if (!isset($input['line']) && isset($input['nohp'])) {
-							$data_input = array(
-									'nama' => $input['nama'], 
-									'email' => $input['email'],
-									'password' => md5($input['password']),
-									'status' => 'free',
-									'line' => $input['nohp']
-								);
+							if ($this->cek_login->cek_hp($input['nohp']) == 1) {
+								$error .= "No. Hp tidak valid <br>";
+							} else {
+								$data_input = array(
+										'nama' => $input['nama'],
+										'email' => $input['email'],
+										'password' => md5($input['password']),
+										'status' => 'free',
+										'line' => $input['nohp']
+									);
+							}
 						} else if (!isset($input['nohp']) && isset($input['line'])) {
 							$data_input = array(
-									'nama' => $input['nama'], 
+									'nama' => $input['nama'],
 									'email' => $input['email'],
 									'password' => md5($input['password']),
 									'status' => 'free',
 									'line' => $input['line']
 								);
 						} else {
-							$data_input = array(
-									'nama' => $input['nama'], 
-									'email' => $input['email'],
-									'password' => md5($input['password']),
-									'status' => 'free',
-									'line' => $input['line'],
-									'wa' => $input['nohp']
-								);
+							if ($this->cek_login->cek_hp($input['nohp']) == 1) {
+								$error .= "No. Hp tidak valid <br>";
+							} else {
+								$data_input = array(
+										'nama' => $input['nama'],
+										'email' => $input['email'],
+										'password' => md5($input['password']),
+										'status' => 'free',
+										'line' => $input['line'],
+										'wa' => $input['nohp']
+									);
+							}
 						}
 						$signup = $this->Login_model->create($this->tabel_member, $data_input);
 						if ($signup) {
@@ -113,7 +118,7 @@
 								'error' => $error
 							);
 			}
-			$this->load->view('form_signup', $data_signup);	
+			$this->load->view('form_signup', $data_signup);
 		}
 
 
@@ -128,7 +133,7 @@
 					$title = "Upgrade Membership";
 				} else if ($page == 'upload_bukti') {
 					$title = "Upload Bukti Pembayaran";
-				}	
+				}
 			}
 
 			// untuk genreate sama status
@@ -191,7 +196,7 @@
 
 		// AKSI
 		public function do_upload() {
-			
+
 			$post = $this->input->post();
 
 			// $config['upload_path']          = './uploads/';
@@ -219,9 +224,14 @@
             }
 		}
 
+		public function testing() {
+				$angka = "081321891430";
+				$a = $this->cek_login->cek_uang($angka);
+				echo $a;
+		}
 
 	}
-	
+
 	/* End of file Member.php */
 	/* Location: ./application/controllers/Member.php */
 ?>
