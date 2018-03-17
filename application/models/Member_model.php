@@ -46,6 +46,11 @@
 			return $this->db->insert($table, $data);
 		}
 
+		public function create2($table, $data) {
+			$this->db->set($data);
+			return $this->db->insert($table, $data);
+		}
+
 		public function hapus($table, $where) {
 			return $this->db->delete($table, $where);
 		}

@@ -57,54 +57,26 @@
 					$data_input = null;
 					// cek apakah email sudah dipakai atau belum
 					$where = array('email' => $input['email']);
+					$input = $this->input->post();
 					$cek_data = $this->Member_model->view_id($where, $this->tabel_member);
 					if (count($cek_data)-1 > 0) {
 						if (count($cek_data)-1 > 0) {
 							$error .= "Email anda sudah terdaftar <br>";
 						}
 					} else {
-						if (!isset($input['line']) && !isset($input['nohp'])) {
-							$data_input = array(
-									'nama' => $input['nama'],
-									'email' => $input['email'],
-									'password' => md5($input['password']),
-									'status' => 'free'
-								);
-						} else if (!isset($input['line']) && isset($input['nohp'])) {
-							if ($this->cek_login->cek_hp($input['nohp']) == 1) {
-								$error .= "No. Hp tidak valid <br>";
-							} else {
-								$data_input = array(
-										'nama' => $input['nama'],
-										'email' => $input['email'],
-										'password' => md5($input['password']),
-										'status' => 'free',
-										'line' => $input['nohp']
-									);
-							}
-						} else if (!isset($input['nohp']) && isset($input['line'])) {
-							$data_input = array(
-									'nama' => $input['nama'],
-									'email' => $input['email'],
-									'password' => md5($input['password']),
-									'status' => 'free',
-									'line' => $input['line']
-								);
+						if (strlen($input['nohp']) > 0 && $this->cek_login->cek_hp($input['nohp']) == 1) {
+							$error .= "No. Hp tidak valid <br>";
 						} else {
-							if ($this->cek_login->cek_hp($input['nohp']) == 1) {
-								$error .= "No. Hp tidak valid <br>";
-							} else {
-								$data_input = array(
-										'nama' => $input['nama'],
-										'email' => $input['email'],
-										'password' => md5($input['password']),
-										'status' => 'free',
-										'line' => $input['line'],
-										'wa' => $input['nohp']
-									);
-							}
+							$data_input = array(
+												'nama' => $input['nama'],
+												'email' => $input['email'],
+												'password' => md5($input['password']),
+												'status' => 'free',
+												'line' => $input['line'],
+												'wa' => $input['nohp']
+											);
 						}
-						$signup = $this->Login_model->create($this->tabel_member, $data_input);
+						$signup = $this->Member_model->create($this->tabel_member, $data_input);
 						if ($signup) {
 							$notifikasi = 'sukses';
 						} else {
@@ -120,6 +92,7 @@
 			}
 			$this->load->view('form_signup', $data_signup);
 		}
+
 
 
 		public function dashboard() {
