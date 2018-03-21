@@ -9,7 +9,7 @@
                 <label>Author</label>
                 <select class="form-control" name="id_mentor">
                     <option value="">-- PILIH MENTOR -- </option>
-                    <?php  
+                    <?php
                         foreach ($daftar_mentor as $key) {
                             echo "<option value='".$key['id_mentor']."'>";
                             echo $key['nama_mentor'];
@@ -19,8 +19,9 @@
                 </select>
             </div>
             <div class="form-group col-md-8">
-                <label>Content</label>
-				<textarea rows="5" class="form-control border-input" placeholder="Post Something" name="content"></textarea>
+                <label>Insert Video's Link Here</label>
+								<input type="text" class="form-control border-input" placeholder="Insert Video's Link Here" autofocus="" required="" name="content">
+				<!-- <textarea rows="5" class="form-control border-input" placeholder="Post Something" name="content"></textarea> -->
             </div>
             <div class="form-group col-md-8">
             	<div class="form-group">

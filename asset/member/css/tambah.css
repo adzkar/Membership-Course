@@ -54,3 +54,17 @@
 		width: 80%;
 		display: inline-block;
 	}
+
+/* Untuk ifram videonya */
+iframe.video {
+	height: 400px;
+	width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+
+	iframe.video {
+		height: 10vh;
+	}
+
+}

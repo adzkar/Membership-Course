@@ -1,4 +1,4 @@
-<?php  
+<?php
 	if (isset($url)) {
 		// cek apakah member dapat mengakses premium content
 		// buat tingkatan kekuatannya dulu
@@ -15,7 +15,7 @@
 ?>
 <img src="<?=base_url('asset/member/img/sad.png')?>" alt="" class="sorry">
 <p class="deskripsi pesan-sorry" style="text-align: center">
-	Maaf Keanggotaan anda saat ini tidak dapat mengakses halaman ini. Untuk mengakses lakukan upgrade terlebih dahulu dengan <br> 
+	Maaf Keanggotaan anda saat ini tidak dapat mengakses halaman ini. Untuk mengakses lakukan upgrade terlebih dahulu dengan <br>
 	<a href="<?=base_url('member/dashboard/upgrade')?>" class="btn-besar">Klik Disini</a>
 </p>
 <?php
@@ -24,7 +24,7 @@
 ?>
 <div class="frame_video">
 	<div class="video">
-		<?=$isi[0]['content']?>
+		<iframe src="<?=$isi[0]['content']?>" class="video" frameborder="0" allowfullscreen></iframe>
 	</div>
 	<div class="judul">
 		<?=$isi[0]['judul']?>
@@ -34,7 +34,7 @@
 	</div>
 	<div class="author">
 		<i class="fa fa-user"></i> <button type="button" data-toggle="modal" data-target="#myModal"> <?=$isi[0]['nama_mentor']?></button>
-		
+
 	</div>
 </div>
 <!-- Modal -->
@@ -80,7 +80,7 @@
 
 	</div>
 </div>
-<?php	
+<?php
 		} //untuk tingkat konten
 	} else {
 		$banyak_data = count($content) - 1;
@@ -105,7 +105,7 @@
   </thead>
   <tbody>
     <tr>
-      <?php  
+      <?php
       	for($i = 1;$i <= count($content)-1;++$i) {
       		echo "<tr>";
       		echo "<td># ".$i."</td>";
