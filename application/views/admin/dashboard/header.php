@@ -42,7 +42,7 @@
 		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
 	-->
         <div class="sidebar-wrapper">
-            
+
 
             <ul class="nav">
                 <li <?php if (!isset($page)) {
@@ -59,6 +59,14 @@
                     <a href="<?=base_url('admin/dashboard/post')?>">
                         <i class="ti-plus"></i>
                         <p>Post</p>
+                    </a>
+                </li>
+								<li <?php if ($page == 'modul' || $page == 'tambah_modul' || $page == 'edit_modul') {
+                    echo 'class = "active"';
+                } ?> >
+                    <a href="<?=base_url('admin/dashboard/modul')?>">
+                        <i class="ti-files"></i>
+                        <p>Modul</p>
                     </a>
                 </li>
                 <li <?php if ($page == 'mentor' || $page == 'tambah_mentor' || $page == 'edit_mentor') {

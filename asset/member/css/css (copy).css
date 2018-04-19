@@ -93,11 +93,11 @@ body{
 	padding: 14px 30px;
 	color: white;
 	/*border-radius: 3px;*/
-	background-color: #1D3720;
+	background-color: #1d2837;
 	/*#1d2837 hitam biru*/
 }
 #navbar .akun:hover{
-	background-color: #1D3720;
+	background-color: #1d2837;
 	cursor: pointer;
 }
 #navbar .akun .akun_drop{
@@ -150,7 +150,7 @@ body{
 	color: black;
 }
 #navbar .akun_drop .logout{
-	background-color: #1D3720;
+	background-color: #1d2837;
 	text-decoration: none;
 	color: white;
 }
@@ -329,7 +329,7 @@ body{
 		right: 0;
 		top: 0;
 		/*background-color: #1d2837;*/
-		background-color: #1D3720;
+		background-color: #1d2837;
 		display: none;
 		transition: 0.3s ease-in-out;
 		text-align: center;
@@ -371,7 +371,7 @@ body{
 	}
 	.responsive_menu .sidebar_menu .logout{
 		/*background-color: #1d2837;*/
-		background-color: #1D3720;
+		background-color: #1d2837;
 	}
 	.responsive_menu .sidebar_menu .button_in_drop a{
 		text-decoration: none;
@@ -386,10 +386,12 @@ body{
 	}
 	.responsive_menu .sidebar_menu .button_in_drop a:hover{
 		color: #5886a6;
+		background-color: #246A98;
 	}
 	.responsive_menu .sidebar_menu .logout:hover{
 		/*box-shadow: 0 3px 5px grey*/
-		background-color: #416A46;
+		/*background-color: #416A46;*/
+		background-color: #246A98;
 	}
 	.responsive_menu .sidebar_menu .logout a:hover{
 		color: white;
@@ -405,14 +407,14 @@ body{
 		display: block;
 		margin-right: 0;
 		margin-left: 0;
-		background-color: #1D3720;
+		background-color: #1d2837;
 		font-size: 12pt;
 		text-decoration: none;
 		color: white;
 	}
 	.responsive_menu .sidebar_menu .kelas:hover{
 		color: white;
-		background-color: #416A46;
+		background-color: #287EB6;
 	}
 	.responsive_upgrade{
 		background-color: #ff9800;

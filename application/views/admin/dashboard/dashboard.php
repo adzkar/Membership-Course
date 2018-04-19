@@ -12,7 +12,7 @@
                     <a class="navbar-brand" href="#">Dashboard</a>
                 </div>
                 <div class="collapse navbar-collapse">
-                    
+
 
                 </div>
             </div>
@@ -22,7 +22,7 @@
         <div class="content">
             <div class="container-fluid">
                 <!-- ini bagian home doang -->
-                <?php  
+                <?php
                 if (!isset($page)) {
                 ?>
                 <div class="row">
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 </div>
-                <?php  
+                <?php
                 }
                 ?>
                 <!-- ini akhir bagian home doang -->
@@ -115,7 +115,7 @@
                                 <h4 class="title">Users Behavior</h4>
                             </div>
                             <div class="content">
-                                <?php  
+                                <?php
                                     if ($page == 'post') {
                                         $this->load->view('admin/dashboard/c_list_post');
                                     } else if ($page == 'member') {
@@ -132,9 +132,13 @@
                                         $this->load->view('admin/dashboard/c_tambah_mentor');
                                     } else if ($page == 'edit_mentor') {
                                         $this->load->view('admin/dashboard/c_edit_mentor');
+                                    } else if ($page == 'modul') {
+                                        $this->load->view('admin/dashboard/c_modul');
+                                    } else if ($page == 'tambah_modul') {
+                                        $this->load->view('admin/dashboard/c_tambah_modul');
                                     }
-                                    
-                                ?>  
+
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -142,6 +146,3 @@
                 <!-- akhir bagian isi -->
             </div>
         </div>
-
-
-        

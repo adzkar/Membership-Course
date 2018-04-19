@@ -1,13 +1,14 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
-	
+
 	class Admin extends CI_Controller {
-	
+
 		private $tabel = "admin";
 		private $tabel_member = "member";
 		private $tabel_upgrade = "upgrade";
 		private $tabel_post = "content";
 		private $tabel_mentor = "author";
+		private $tabel_modul = "modul";
 
 		private	$data_login = array('status_masuk' => 'ya');
 
@@ -35,7 +36,7 @@
 					$cek = $this->Login_model->cek($data_cek,$this->tabel);
 					if ($cek->num_rows() == 1) {
 						$buat_sesi = array(
-									'status_masuk' => 'ya', 
+									'status_masuk' => 'ya',
 								);
 						$this->session->set_userdata($buat_sesi);
 						redirect('admin/dashboard');
@@ -48,7 +49,7 @@
 				$this->load->view('admin/login', $login_view);
 			}
 		}
-	
+
 		public function dashboard() {
 			// $this->data_login = array('status_masuk' => 'ya');
 			$page = $this->uri->segment(3);
@@ -67,7 +68,7 @@
 			if ($page == 'edit_mentor') {
 				$id_content = $this->uri->segment(4);
 				$where = array('id_mentor' => $id_content);
-				$view_mentor = $this->Member_model->view_id($where, $this->tabel_mentor);	
+				$view_mentor = $this->Member_model->view_id($where, $this->tabel_mentor);
 			}
 
 			// update post
@@ -90,15 +91,23 @@
 
 			// untuk melihat upgrade bagian nama
 			$nama = NULL;
+
+			// Bagian Upgrade
 			if ($page == 'upgrade') {
 				$data_upgrade = $this->Member_model->baca_data($this->tabel_upgrade);
 				$nama = $this->Member_model->nama();
 			}
 
+			// Bagian Modul
+			if ($page == 'modul') {
+				$data_upgrade = $this->Member_model->baca_data($this->tabel_modul);
+				// $nama = $this->Member_model->nama();
+			}
+
 			// untuk melihat daftar mentor yang ada
 			$daftar_mentor = NULL;
-			if ($page == 'tambah_post' || $page == 'edit_post') {
-				$daftar_mentor = $this->Member_model->baca_data($this->tabel_mentor);			
+			if ($page == 'tambah_post' || $page == 'edit_post' || $page == 'tambah_modul') {
+				$daftar_mentor = $this->Member_model->baca_data($this->tabel_mentor);
 			}
 
 			// untuk melihat postnya
@@ -112,12 +121,13 @@
 						'content' => 'dashboard',
 						'member' => $this->Member_model->baca_data($this->tabel_member),
 						'upgrade' => $this->Member_model->baca_data($this->tabel_upgrade),
+						'modul' => $this->Member_model->baca_data($this->tabel_modul),
 						'post' => $a,
 						'post_id' => $view_id,
 						'mentor' => $this->Member_model->baca_data($this->tabel_mentor),
 						'nama' => $nama,
 						'edit_mentor' => $view_mentor,
-						'daftar_mentor' => $daftar_mentor 
+						'daftar_mentor' => $daftar_mentor
 					);
 
 
@@ -140,13 +150,43 @@
 			redirect('admin/dashboard/member');
 		}
 
+		// Aksi untuk tambah_modul
+		public function input_modul() {
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
+			// untuk bagian upload
+			$config['upload_path']          = './modul/';
+			$config['allowed_types']        = 'doc|docx|pdf';
+			$config['max_size']             = 10000;
+			$this->load->library('upload', $config);
+
+			$post = $this->input->post();
+
+			if ($this->upload->do_upload('filemodul')) {
+				$post = $this->input->post();
+				$file = $this->upload->data();
+				$nama_file = $file['file_name'];
+				$data_input = array(
+								'judul_modul' => $post['judul'],
+								'id_mentor' => $post['id_mentor'],
+								'kategori' => $post['kategori'],
+								'date' => date('Y-m-d H:i:s'),
+								'status' => $post['status'],
+								'link' => url_title($post['judul'], '-', TRUE),
+								'file' => $nama_file
+							);
+				$this->Login_model->create($this->tabel_modul, $data_input);
+				redirect('admin/dashboard/modul');
+			} else {
+				echo "Gagal";
+			}
+		}
 
 		// Aksi untuk post
 		public function input_data() {
 			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
 			$post = $this->input->post();
 			$data_input = array(
-							'judul' => $post['judul'], 
+							'judul' => $post['judul'],
 							'content' => $post['content'],
 							'id_mentor' => $post['id_mentor'],
 							'kategori' => $post['kategori'],
@@ -195,12 +235,12 @@
 			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
 			$post = $this->input->post();
 			$data_input = array(
-							'nama_mentor' => $post['nama'], 
+							'nama_mentor' => $post['nama'],
 							'line' => $post['line'],
 							'wa' => $post['wa']
 						);
 			$input = $this->Member_model->create($this->tabel_mentor, $data_input);
-			redirect('admin/dashboard/mentor');		
+			redirect('admin/dashboard/mentor');
 		}
 
 		// update mentor
@@ -208,7 +248,7 @@
 			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
 			$post = $this->input->post();
 			$data_update = array(
-							'nama_mentor' => $post['nama'], 
+							'nama_mentor' => $post['nama'],
 							'line' => $post['line'],
 							'wa' => $post['wa']
 						);
@@ -240,7 +280,7 @@
 		}
 
 	}
-	
+
 	/* End of file Admin.php */
 	/* Location: ./application/controllers/Admin.php */
 
