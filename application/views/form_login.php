@@ -4,8 +4,8 @@
 	<title>Member Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<?=base_url('asset/login/')?>images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="<?=base_url('asset/member/')?>img/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -14,13 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/animate/animate.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>css/util.css">
@@ -28,7 +28,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -38,7 +38,7 @@
 						<img src="<?=base_url('asset/member/img/dougle.png')?>" alt="" class="logo" style="width: 200px;">
 					</span>
 
-					<?php  
+					<?php
 						if (isset($notifikasi) && $notifikasi == 0) {
 					?>
 						<div class="alert alert-danger">
@@ -86,10 +86,10 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div id="dropDownSelect1"></div>
-	
+
 <!--===============================================================================================-->
 	<script src="<?=base_url('asset/login/')?>vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

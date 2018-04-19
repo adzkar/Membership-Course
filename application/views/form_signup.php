@@ -4,8 +4,8 @@
 	<title>Login V2</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<?=base_url('asset/login/')?>images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="<?=base_url('asset/member/')?>img/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -14,13 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>fonts/iconic/css/material-design-iconic-font.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/animate/animate.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?=base_url('asset/login/')?>css/util.css">
@@ -42,7 +42,7 @@
 	</style>
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -52,7 +52,7 @@
 						<!-- <i class="zmdi zmdi-font"></i> -->
 						<img src="<?=base_url('asset/member/img/dougle.png')?>" alt="" class="logo" style="width: 200px;">
 					</span>
-					<?php  
+					<?php
 						if (isset($status) && $status == 'sukses') {
 					?>
 						<div class="alert alert-success">
@@ -73,7 +73,7 @@
 					<?php
 						}
 					?>
-					<?php  
+					<?php
 						if (isset($error)) {
 					?>
 						<div class="alert alert-danger">
@@ -86,12 +86,12 @@
 					?>
 					<div class="wrap-input100 validate-input" data-validate = "Enter nama">
 						<input class="input100" type="text" name="nama" required="">
-						<span class="focus-input100" data-placeholder="Nama *"></span> 
+						<span class="focus-input100" data-placeholder="Nama *"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
 						<input class="input100" type="text" name="email" required="">
-						<span class="focus-input100" data-placeholder="Email *"></span> 
+						<span class="focus-input100" data-placeholder="Email *"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
@@ -104,12 +104,12 @@
 
 					<div class="wrap-input100">
 						<input class="input100" type="text" name="line">
-						<span class="focus-input100" data-placeholder="ID Line **"></span> 
+						<span class="focus-input100" data-placeholder="ID Line **"></span>
 					</div>
 
 					<div class="wrap-input100">
 						<input class="input100" type="text" name="nohp">
-						<span class="focus-input100" data-placeholder="No. HP / WA **"></span> 
+						<span class="focus-input100" data-placeholder="No. HP / WA **"></span>
 					</div>
 
 					<p class="kotak">
@@ -141,10 +141,10 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div id="dropDownSelect1"></div>
-	
+
 <!--===============================================================================================-->
 	<script src="<?=base_url('asset/login/')?>vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

@@ -12,7 +12,9 @@
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/css.css">
 	<link rel="stylesheet" href="<?=base_url('asset/member/')?>css/tambah.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+	<link rel="icon" type="image/png" href="<?=base_url('asset/member/')?>img/favicon.ico"/>
 	
+
 
 	<script src="<?=base_url('asset/member/')?>js/bootstrap.js"></script>
 	<script src="<?=base_url('asset/member/')?>js/bootstrap.min.js"></script>
@@ -79,7 +81,7 @@
 								<li class="button"><a class="class btn" style="color: #fff" href="<?=base_url('member/dashboard/advance')?>" type="">Advance</a>
 								<li class="button"><a class="class btn" style="color: #fff" href="<?=base_url('member/dashboard/basic')?>" type="">Basic</a>
 								</div>
-								<?php  
+								<?php
 									if ($status == 'free') {
 								?>
 								<li class="button"><a class="btn upgrade" type="" href="<?=base_url('member/dashboard/upgrade')?>">UPGRADE</a>
@@ -88,13 +90,13 @@
 								?>
 									</div>
 								</div>
-								<?php  
+								<?php
 									if ($status == 'free') {
 								?>
 								<a type="" class="responsive_upgrade">
 									UPGRADE
 								</a>
-								<?php  
+								<?php
 									}
 								?>
 								</center>
