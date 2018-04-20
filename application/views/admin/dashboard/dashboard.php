@@ -136,7 +136,9 @@
                                         $this->load->view('admin/dashboard/c_modul');
                                     } else if ($page == 'tambah_modul') {
                                         $this->load->view('admin/dashboard/c_tambah_modul');
-                                    }
+                                    } else if ($page == 'edit_modul') {
+                                        $this->load->view('admin/dashboard/c_edit_modul');
+                                    } 
 
                                 ?>
                             </div>

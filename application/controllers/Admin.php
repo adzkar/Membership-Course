@@ -101,12 +101,19 @@
 			// Bagian Modul
 			if ($page == 'modul') {
 				$data_upgrade = $this->Member_model->baca_data($this->tabel_modul);
-				// $nama = $this->Member_model->nama();
+			}
+
+			// untuk edit modul
+			$view_modul = NULL;
+			if ($page == 'edit_modul') {
+				$id_modul = $this->uri->segment(4);
+				$where = array('id_modul' => $id_modul);
+				$view_modul = $this->Member_model->view_id($where, $this->tabel_modul);
 			}
 
 			// untuk melihat daftar mentor yang ada
 			$daftar_mentor = NULL;
-			if ($page == 'tambah_post' || $page == 'edit_post' || $page == 'tambah_modul') {
+			if ($page == 'tambah_post' || $page == 'edit_post' || $page == 'tambah_modul' || $page == 'edit_modul') {
 				$daftar_mentor = $this->Member_model->baca_data($this->tabel_mentor);
 			}
 
@@ -127,7 +134,8 @@
 						'mentor' => $this->Member_model->baca_data($this->tabel_mentor),
 						'nama' => $nama,
 						'edit_mentor' => $view_mentor,
-						'daftar_mentor' => $daftar_mentor
+						'daftar_mentor' => $daftar_mentor,
+						'edit_modul' => $view_modul
 					);
 
 
@@ -140,6 +148,24 @@
 				redirect('admin');
 			}
 		}
+
+		// aksi untuk modul
+		public function hapus_modul() {
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
+			$id = $this->uri->segment(3);
+			$where = array('id_modul' => $id);
+			$path = './modul/';
+			$data = $this->Member_model->view_id($where, $this->tabel_modul);
+			$file_name = $data[0]['file'];
+			$this->load->helper('file');
+			$path = $path.$file_name;
+			if($this->Member_model->hapus($this->tabel_modul, $where)) {
+				unlink($path);
+			}
+			redirect('admin/dashboard/modul');
+		}
+
+
 
 		// Aksi untuk Member
 		public function hapus() {
@@ -175,11 +201,62 @@
 								'file' => $nama_file
 							);
 				$this->Login_model->create($this->tabel_modul, $data_input);
-				redirect('admin/dashboard/modul');
-			} else {
-				echo "Gagal";
 			}
+			redirect('admin/dashboard/modul');
 		}
+		// Aksi untuk update modul
+		// disini
+		public function update_modul() {
+			$this->cek_login->cek_sesi($this->data_login, 'status_masuk', 'ya', 'admin');
+			// untuk bagian upload
+			$config['upload_path']          = './modul/';
+			$config['allowed_types']        = 'doc|docx|pdf';
+			$config['max_size']             = 10000;
+			$this->load->library('upload', $config);
+
+			$post = $this->input->post();
+
+			$id = $post['id_modul'];
+			$where = array('id_modul' => $id);
+			$databaru = NULL;
+			if(strlen($_FILES["filemodul"]["name"]) == 0) {
+				// jika tidak ganti file
+				$databaru = array(
+											'judul_modul' => $post['judul'],
+											'id_mentor' => $post['id_mentor'],
+											'kategori' => $post['kategori'],
+											'status' => $post['status'],
+											'date' => date('Y-m-d H:i:s'),
+											'link' => url_title($post['judul'], '-', TRUE)
+										);
+			} else {
+				$path = './modul/';
+				// jika ganti file
+					// hapus file lama
+				$data = $this->Member_model->view_id($where, $this->tabel_modul);
+				$path =  $path.$data[0]['file'];
+				unlink($path);
+					// update data
+
+				if ($this->upload->do_upload('filemodul')) {
+					$file = $this->upload->data();
+					$nama_file = $file['file_name'];
+					$databaru = array(
+												'judul_modul' => $post['judul'],
+												'id_mentor' => $post['id_mentor'],
+												'kategori' => $post['kategori'],
+												'status' => $post['status'],
+												'date' => date('Y-m-d H:i:s'),
+												'link' => url_title($post['judul'], '-', TRUE),
+												'file' => $nama_file
+											);
+				}
+
+			}
+			$this->Member_model->update_data($this->tabel_modul, $where, $databaru);
+			redirect('admin/dashboard/modul');
+		}
+
 
 		// Aksi untuk post
 		public function input_data() {

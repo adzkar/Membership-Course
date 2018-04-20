@@ -1,8 +1,8 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
-	
+
 	class Member_model extends CI_Model {
-	
+
 		public function baca_data($table) {
 			$data;
 			$query = $this->db->get($table);
@@ -32,7 +32,7 @@
 			$query = $this->db->get();
 			if ($query->num_rows() > 0) {
 				$data = $query->result_array();
-			} 
+			}
 			return $data;
 		}
 
@@ -75,9 +75,9 @@
 
 			return $data;
 		}
-	
+
 	}
-	
+
 	/* End of file Member_model.php */
 	/* Location: ./application/models/Member_model.php */
 ?>

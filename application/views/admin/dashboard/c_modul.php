@@ -23,7 +23,7 @@
                               echo "<td>".$row['judul_modul']."</td>";
                               echo "<td><a target='_blank' href='".base_url("modul/$row[file]")."' class='btn btn-default btn-success'>Download</a></td>";
                               echo "<td style='text-align: center'>";
-                              echo "<a href='".base_url("admin/edit_modul/$row[id_modul]")."' class='btn btn-primary'>Edit</a>";
+                              echo "<a href='".base_url("admin/dashboard/edit_modul/$row[id_modul]")."' class='btn btn-primary'>Edit</a>";
                               echo "&nbsp &nbsp";
                               echo "<a href='".base_url("admin/hapus_modul/$row[id_modul]")."' class='btn btn-default btn-danger'>Hapus</a>";
                               echo "</td>";
