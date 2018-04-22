@@ -21,7 +21,7 @@
                               echo "<tr>";
                               echo "<td>$no</td>";
                               echo "<td>".$row['judul_modul']."</td>";
-                              echo "<td><a target='_blank' href='".base_url("modul/$row[file]")."' class='btn btn-default btn-success'>Download</a></td>";
+                              echo "<td><a target='_blank' href='".base_url("modul/$row[file]")."' class='btn btn-default btn-success' download>Download</a></td>";
                               echo "<td style='text-align: center'>";
                               echo "<a href='".base_url("admin/dashboard/edit_modul/$row[id_modul]")."' class='btn btn-primary'>Edit</a>";
                               echo "&nbsp &nbsp";

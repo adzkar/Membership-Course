@@ -8,7 +8,7 @@
           <th style="text-align: center;">Aksi</th>
         </thead>
         <tbody>
-            <?php  
+            <?php
                 $no = 1;
                 if ($upgrade == NULL) {
                     echo "<tr>";
@@ -33,19 +33,19 @@
                               if ($row['lunas'] == 1) {
                                 echo "<a class='btn btn-default btn-success' style='cursor: default'>Sudah Aktif</a>";
                               } else {
-                                echo "<a href='".base_url('admin/upgrade_member/')."?id_upgrade=".$row['id_upgrade']."&id_member=".$row['id_member']."' class='btn btn-default btn-primary'>Aktivkan</a>";
+                                echo "<a href='".base_url('admin/upgrade_member/')."?id_upgrade=".$row['id_upgrade']."&id_member=".$row['id_member']."' class='btn btn-default btn-primary'>Aktifkan</a>";
                               }
                               echo " &nbsp &nbsp";
                               echo "<a href='".base_url("admin/hapus_upgrade/$row[id_upgrade]")."' class='btn btn-default btn-danger'>Hapus</a>";
                               echo "</td>";
                               echo "</tr>";
                               $no++;
-                          }      
+                          }
                 }
             ?>
         </tbody>
     </table>
-    <?php  
+    <?php
         // print_r($member);
     ?>
 </div>

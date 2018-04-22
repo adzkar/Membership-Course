@@ -6,6 +6,7 @@
 		private $tabel_member = "member";
 		private $tabel_upgrade = "upgrade";
 		private $tabel_content = "content";
+		private $tabel_modul = "modul";
 
 		public function __construct()
 		{
@@ -132,9 +133,13 @@
 			$url = $this->uri->segment(4);
 			$isi = NULL;
 			if (isset($url)) {
-				$where = array('link' => $url);
-				// $isi = $this->Member_model->view_id($where, $this->tabel_content);
-				$isi = $this->Member_model->lihat_konten($url);
+				if($url == 'modul') {
+					$isi = $this->Member_model->baca_data($this->tabel_modul);
+				} else {
+					$where = array('link' => $url);
+					// $isi = $this->Member_model->view_id($where, $this->tabel_content);
+					$isi = $this->Member_model->lihat_konten($url);
+				}
 			}
 
 			// untuk bagian upgrade

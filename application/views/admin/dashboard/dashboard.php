@@ -116,29 +116,29 @@
                             </div>
                             <div class="content">
                                 <?php
-                                    if ($page == 'post') {
+                                    if ($page == 'post')
                                         $this->load->view('admin/dashboard/c_list_post');
-                                    } else if ($page == 'member') {
+                                     else if ($page == 'member')
                                         $this->load->view('admin/dashboard/c_member');
-                                    } else if ($page == 'upgrade') {
+                                     else if ($page == 'upgrade')
                                         $this->load->view('admin/dashboard/c_upgrade');
-                                    } else if ($page == 'tambah_post') {
+                                     else if ($page == 'tambah_post')
                                         $this->load->view('admin/dashboard/c_tambah_post');
-                                    } else if ($page == 'edit_post') {
+                                     else if ($page == 'edit_post')
                                         $this->load->view('admin/dashboard/c_edit_post');
-                                    } else if ($page == 'mentor') {
+                                     else if ($page == 'mentor')
                                         $this->load->view('admin/dashboard/c_mentor');
-                                    } else if ($page == 'tambah_mentor') {
+                                     else if ($page == 'tambah_mentor')
                                         $this->load->view('admin/dashboard/c_tambah_mentor');
-                                    } else if ($page == 'edit_mentor') {
+                                     else if ($page == 'edit_mentor')
                                         $this->load->view('admin/dashboard/c_edit_mentor');
-                                    } else if ($page == 'modul') {
+                                     else if ($page == 'modul')
                                         $this->load->view('admin/dashboard/c_modul');
-                                    } else if ($page == 'tambah_modul') {
+                                     else if ($page == 'tambah_modul')
                                         $this->load->view('admin/dashboard/c_tambah_modul');
-                                    } else if ($page == 'edit_modul') {
+                                     else if ($page == 'edit_modul') 
                                         $this->load->view('admin/dashboard/c_edit_modul');
-                                    } 
+
 
                                 ?>
                             </div>
