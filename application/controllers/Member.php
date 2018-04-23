@@ -134,7 +134,9 @@
 			$isi = NULL;
 			if (isset($url)) {
 				if($url == 'modul') {
-					$isi = $this->Member_model->baca_data($this->tabel_modul);
+					if($page == 'basic') $isi = $this->Member_model->view_id(array('kategori' => 'basic'), $this->tabel_modul);
+					if($page == 'advance') $isi = $this->Member_model->view_id(array('kategori' => 'advance'), $this->tabel_modul);
+					// $isi = $this->Member_model->baca_data($this->tabel_modul);
 				} else {
 					$where = array('link' => $url);
 					// $isi = $this->Member_model->view_id($where, $this->tabel_content);

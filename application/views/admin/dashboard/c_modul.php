@@ -4,6 +4,8 @@
         <thead>
           <th>No</th>
         	<th>Judul Modul</th>
+          <th>Kategori</th>
+          <th>Tingkat</th>
           <th>Download</th>
           <th style="text-align: center;">Aksi</th>
         </thead>
@@ -21,6 +23,8 @@
                               echo "<tr>";
                               echo "<td>$no</td>";
                               echo "<td>".$row['judul_modul']."</td>";
+                              echo "<td>".$row['kategori']."</td>";
+                              echo "<td>".$row['status']."</td>";
                               echo "<td><a target='_blank' href='".base_url("modul/$row[file]")."' class='btn btn-default btn-success' download>Download</a></td>";
                               echo "<td style='text-align: center'>";
                               echo "<a href='".base_url("admin/dashboard/edit_modul/$row[id_modul]")."' class='btn btn-primary'>Edit</a>";

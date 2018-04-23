@@ -9,16 +9,15 @@
   </thead>
   <tbody>
     <?php
-      $i = 1;
-      foreach ($isi as $row) {
+      for ($i = 0;$i < count($isi)-1;$i++) {
+        $a = $i + 1;
         echo "<tr>";
-          echo "<td>$i</td>";
-          echo "<td>".$row['judul_modul']."</td>";
+          echo "<td>".$a."</td>";
+          echo "<td>".$isi[$i]['judul_modul']."</td>";
           echo "<td>";
-            echo "<a href='".base_url("modul/$row[file]")."' download>Download</a>";
+            echo "<a href='".base_url("modul/".$isi[$i]['file'])."' download>Download</a>";
           echo "</td>";
         echo "<tr>";
-        $i++;
       }
     ?>
   </tbody>
